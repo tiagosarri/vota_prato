@@ -1,0 +1,29 @@
+
+  <%= render :partial => "titulo" %>
+  <p>
+    <strong>Nome: </strong>
+    <%= @restaurante.nome %>
+  </p>
+  <p>
+    <strong>Endereço: </strong>
+    <%=h @restaurante.endereco %>
+  </p>
+
+  <p>
+    <strong>Nome: </strong>
+    <%=h @restaurante.especialidade %>
+  </p>
+
+  <strong>Nota media: <%= @restaurante.qualificacoes.average(:nota)%></strong><br />
+  <strong>Qualificações: </strong><%= @restaurante.qualificacoes.count%><br />
+  <strong>Preço medio: </strong><%= @restaurante.qualificacoes.average(:valor_gasto)%></strong>    <br />
+
+
+  <%= link_to "Qualificar este restaurante", :controller => "qualificacoes", :action => "new", :restaurante => @restaurante %>
+
+  <%= link_to 'Edit', { :action => 'edit', :id => @restaurante }%>
+  <%= link_to 'Back', { :action => 'index' } %>
+
+<% unless @restaurante.comentarios.empty? %>
+  <%= comentarios @restaurante %>
+<% end %>

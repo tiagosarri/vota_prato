@@ -1,0 +1,29 @@
+  <%= render :partial => "titulo" %>
+
+  <table>
+    <tr>
+      <th>Nome</th>
+      <th>Endereço</th>
+      <th>Especialidade</th>            
+    </tr>
+    
+    <% for restaurante in @restaurantes %>    
+      <tr>
+        <td><%=h restaurante.nome %></td>
+        <td><%=h restaurante.endereco %></td>
+        <td><%=h restaurante.especialidade %></td>
+        <td><%= link_to 'Show', { :action => 'show', :id => restaurante }%></td>
+        <td><%= link_to 'Edit', { :action => 'edit', :id => restaurante }%></td>
+        <td><%#= link_to 'Destroy', { :action => 'destroy', :id => restaurante }%></td>                
+      </tr>
+    <% end %>
+  </table>
+  <br />
+
+  <%= will_paginate @restaurantes %>
+
+  <%= link_to 'New', { :action => 'new'} %>
+
+  <%= link_to "Frios", por_especialidade_url(:especialidade => "frios") %>
+
+
